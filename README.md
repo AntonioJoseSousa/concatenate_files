@@ -5,7 +5,7 @@ O Script irá fazer download de 22 arquivos.fa.gz(cromossomos), colocar em ordem
 
 #criação de um novo diretorio/Pasta
 
-'mkdir referencia'
+'''mkdir referencia'''
 
 #criação de um arquivo de download da referencia
 
