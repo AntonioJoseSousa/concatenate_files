@@ -1,36 +1,39 @@
 # concatenate_files
 
-Script para fazer download e unir arquivos .FASTA
-O Script irá fazer download de 22 arquivos.fa.gz(cromossomos), colocar em ordem numerica e por fim ira concatenar todos os arquivos de forma ordenada em um arquivo final o hg38.fa
+## Script para fazer download e unir arquivos .FASTA
 
-#criação de um novo diretorio/Pasta
+Este script faz o download de 22 arquivos .fa.gz (cromossomos), os coloca em ordem numérica e, por fim, concatena todos os arquivos de forma ordenada em um arquivo final chamado `hg38.fa`.
 
-'''mkdir referencia'''
+### Passo 1: Criação de um novo diretório/pasta
 
-#criação de um arquivo de download da referencia
+```bash
+mkdir referencia
 
-'seq 1 22 | awk '{print("wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr"$1".fa.gz")}' > pegar-fa.txt'
+### Passo 2: Criação de um arquivo de download da referência
 
-#execução do arquivo para o download da reference 
+seq 1 22 | awk '{print("wget -c https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr"$1".fa.gz")}' > pegar-fa.txt
 
-'sh pegar-fa.txt'
+### Passo 3: Execução do arquivo para o download da referência
 
-#vizualizar os arquivos baixados
+sh pegar-fa.txt
 
-'ls'
+### Passo 4: Visualizar os arquivos baixados
+
+ls
 
 output 
 
 chr10.fa.gz  chr12.fa.gz  chr14.fa.gz  chr16.fa.gz  chr18.fa.gz  chr1.fa.gz   chr21.fa.gz  chr2.fa.gz  chr4.fa.gz  chr6.fa.gz  chr8.fa.gz
 chr11.fa.gz  chr13.fa.gz  chr15.fa.gz  chr17.fa.gz  chr19.fa.gz  chr20.fa.gz  chr22.fa.gz  chr3.fa.gz  chr5.fa.gz  chr7.fa.gz  chr9.fa.gz
 
-#concatenar todos os arquivos baixados, em ordem numérica e salvar em um unico arquivo e por fim salvar na pasta reference
 
-'/workspace/comandos-linux (main) $ ls -1 *.fa.gz | sort -V | xargs zcat > hg38.fa | mv /workspace/comandos-linux/hg38.fa /workspace/comandos-linux/reference'
+### Passo 5: Concatenar todos os arquivos baixados, em ordem numérica, salvar em um único arquivo e  Mover o arquivo final para a pasta "reference"
 
-#Verificar a ordem
+/workspace/comandos-linux (main) $ ls -1 *.fa.gz | sort -V | xargs zcat > hg38.fa | mv /workspace/comandos-linux/hg38.fa /workspace/comandos-linux/reference
 
-'/reference (main) $ grep ">" hg38.fa'
+### Passo 7: Verificar a ordem dos cromossomos no arquivo final
+
+/reference (main) $ grep ">" hg38.fa
 
 output
 
